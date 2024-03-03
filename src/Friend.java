@@ -8,23 +8,19 @@ public class Friend extends Person{
         this.foodToBring = foodToBring;
     }
 
-    //The Friend subclass should have a toString() method which builds a string describing the person,
-    // their food and whether they are invited or not.
-    // It should call the super’s getFullName() method and include some basic logic to use the super’s isInvited
-    // to build an appropriate message about each potential guest. The method should return something like:
-//“Jane Doe is bringing pizza. They are invited to the party.” OR
-//“John Doe is bringing broccoli. They are NOT invited to the party.”
-
-    public java.lang.String toString(String firstName, String lastName, boolean isInvited, String foodToBring) {
-        if (this.isInvited())
+    //Method
+    @Override
+    public String toString() {
+        String invited;
+        if(!super.isInvited())
         {
-            return Person.getFullName(firstName,lastName)+ " is bringing " + this.foodToBring+ ". They are invited to the party.";
+            invited = "NOT invited";
         }
         else
         {
-            return Person.getFullName(firstName,lastName)+ " is bringing " + this.foodToBring+ ". They are not invited to the party.";
+            invited = "invited";
         }
-
+        return super.getFullName() + " is bringing " + foodToBring + ". They are " + invited + " to the party.";
+        //MUST use super instead the actual name of parent class.
     }
-
 }
